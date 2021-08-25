@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xmlns:context="http://www.springframework.org/schema/context" 
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context
+   http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+   
+   <context:annotation-config></context:annotation-config><!-- not needed when componenet scan is done... remove it -->
+   <context:component-scan base-package="com.hsbc"></context:component-scan>
+   <bean id="hw" class="com.hsbc.HelloWorld" />
+   
+   <!-- <bean id="cc"  class="com.hsbc.CurrencyConverter">
+    <property name="exchrate" value="76.8" /> this was setter injection and below constructor injection 
+   <constructor-arg value="77.1"/>
+   	<property name="exchangeService">
+   		<ref bean="es" />
+   	</property> manual wiring and now we try autowire  
+   </bean>
+   <bean id="es" class="com.hsbc.ExchangeService" />  -->
+   
+   
+   <bean id="book" class="com.hsbc.Book">
+   <property name="bname" value="Harry Potter" />
+   <property name="Author" ref="au"/>
+   <property name="price" value="100" />
+   </bean>
+   <!-- we have to use by type or byindex 
+   <constructor-arg index="0" value="Hermoine Potter"/>
+   <constructor-arg index="1" value="JK Rowling"/>
+   <constructor-arg index="2" value="1200"/> -->
+   
+   <bean id="au" class="com.hsbc.Author">
+    <constructor-arg index="0" value="KK Menon" />
+    <constructor-arg index="1" value="31" />
+    <constructor-arg index="2" value="ama@hmail"></constructor-arg>
+   </bean>
+    </beans> 
